@@ -65,6 +65,15 @@ cd xfce-mac-desktop
 3. `xfconf-query -c xfwm4 -p /general/activate_action -s bring`
 4. 面板右键 → 面板首选项 → 项目，把 docklike 换回"窗口按钮"，按需加回"工作区切换器"
 
+## 致谢与许可
+
+- `picom-pijulius/` 目录是 [pijulius/picom](https://github.com/pijulius/picom) 的源码副本
+  （基于 [yshui/picom](https://github.com/yshui/picom)），遵循其原有协议
+  **MPL-2.0 / MIT**（见目录内 `COPYING` 与 `LICENSES/`），本仓库原样分发、未做修改
+- 图标 dock 使用 [xfce4-docklike-plugin](https://gitlab.xfce.org/panel-plugins/xfce4-docklike-plugin)
+  （GPL-3.0），由系统包管理器安装，本仓库不包含其代码
+- 其余文件（守护脚本、install.sh、配置、CSS）为本仓库原创
+
 ## 已知限制
 
 - 多个桌面间跳跃切换（跨度 >1）时，滑动方向偶尔会判断反（picom 按 ±1 和首尾循环推断方向）
