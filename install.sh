@@ -19,11 +19,13 @@ sudo apt-get install -y \
 
 echo "==> [2/6] 编译 picom (pijulius 分支，带工作区滑动动画)"
 SRC="$HERE/picom-pijulius"
+# 源码已随仓库内置（版本 $PICOM_REV）；目录缺失时才从上游克隆兜底
 if [ ! -d "$SRC" ]; then
     git clone https://github.com/pijulius/picom.git "$SRC"
     git -C "$SRC" checkout "$PICOM_REV" 2>/dev/null \
         || echo "    (提示: 固定版本 $PICOM_REV 不存在，使用最新版)"
 fi
+rm -rf "$SRC/build"
 meson setup "$SRC/build" "$SRC" --buildtype=release --prefix="$HOME/.local" \
     >/dev/null
 ninja -C "$SRC/build" install >/dev/null

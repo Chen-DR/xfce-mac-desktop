@@ -34,11 +34,12 @@ cd xfce-mac-desktop
 
 ## 依赖
 
-- **仓库软件包**（install.sh 自动安装）：`wmctrl`、`python3-xlib`、`xfconf`、
-  `xfce4-docklike-plugin`，以及编译 picom 所需的 meson/ninja/cmake 和各 xcb/gl 开发库
-- **源码编译**：[pijulius/picom](https://github.com/pijulius/picom) 分支
-  （主线 picom 没有 `workspace-in/out` 动画触发器），install.sh 自动克隆编译，
-  装到 `~/.local/bin/picom`，不污染系统目录
+- **随仓库内置**：[pijulius/picom](https://github.com/pijulius/picom) 分支源码
+  （`picom-pijulius/`，版本 `8f83eb5`，主线 picom 没有 `workspace-in/out` 动画触发器）。
+  克隆本仓库即获得全部代码，编译**不需要再联网**，装到 `~/.local/bin/picom`，不污染系统目录
+- **目标系统软件包**（install.sh 通过 apt 自动安装，这类系统库无法打包进 git）：
+  `wmctrl`、`python3-xlib`、`xfconf`、`xfce4-docklike-plugin`，
+  以及编译 picom 所需的 meson/ninja/cmake 和各 xcb/gl 开发库
 
 ## install.sh 对系统的改动
 
