@@ -1,0 +1,30 @@
+/* docklike 图标动效：悬停放大 + 切换弹跳（mac 风格） */
+
+/* 所有图标：为变换加过渡 */
+.hover_group image,
+.open_group image,
+.active_group image {
+    transition: -gtk-icon-transform 150ms ease-out;
+}
+
+/* 鼠标悬停：放大 */
+.hover_group image {
+    -gtk-icon-transform: scale(1.3);
+}
+
+/* 按下瞬间：轻微缩回，产生"按下去"的手感 */
+.hover_group:active image {
+    -gtk-icon-transform: scale(1.1);
+}
+
+/* 切换到某应用（其分组变为激活态）：弹跳一下 */
+@keyframes dock-bounce {
+    0%   { -gtk-icon-transform: translateY(0px); }
+    30%  { -gtk-icon-transform: translateY(-5px); }
+    55%  { -gtk-icon-transform: translateY(0px); }
+    75%  { -gtk-icon-transform: translateY(-2px); }
+    100% { -gtk-icon-transform: translateY(0px); }
+}
+.active_group image {
+    animation: dock-bounce 450ms ease-out 1;
+}
