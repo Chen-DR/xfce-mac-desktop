@@ -27,6 +27,9 @@
 `workspace-in/out` 动画触发器），install.sh 会自动克隆编译，装到 `~/.local/bin/picom`，
 不污染系统目录。xfwm4 自带合成器会被关闭（`xfconf-query -c xfwm4 -p /general/use_compositing`）。
 
+install.sh 还会把 xfwm4 的 `activate_action` 从默认的 `bring` 改为 `switch`：
+当应用请求激活其他桌面上的窗口时（如终端调起浏览器打开链接），切换过去而不是把窗口拽过来。
+
 ## 常用调整
 
 - **动画时长**：`~/.config/picom.conf` 里的 `duration = 0.3`，改完 `pkill -x picom` 再运行 `~/.local/bin/picom -b`

@@ -63,6 +63,10 @@ echo "==> [5/5] 关闭 xfwm4 自带合成器并启动"
 if [ -n "${DISPLAY:-}" ]; then
     xfconf-query -c xfwm4 -p /general/use_compositing -n -t bool -s false \
         2>/dev/null || xfconf-query -c xfwm4 -p /general/use_compositing -s false
+    # 应用请求激活别的窗口时：切换到该窗口所在桌面（mac 行为），
+    # 而不是把窗口拽到当前桌面（xfwm4 默认的 bring）
+    xfconf-query -c xfwm4 -p /general/activate_action -n -t string -s switch \
+        2>/dev/null || xfconf-query -c xfwm4 -p /general/activate_action -s switch
     pkill -f '^python3 .*/fullscreen-workspace.py' 2>/dev/null || true
     pkill -x picom 2>/dev/null || true
     sleep 1
